@@ -16,7 +16,7 @@ FROM python:3.13-slim
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-RUN pip install --upgrade pip && pip install poetry==1.5.1
+RUN pip install --upgrade pip && pip install poetry
 
 COPY ./backend/pyproject.toml ./backend/poetry.lock ./
 RUN poetry install --no-root
