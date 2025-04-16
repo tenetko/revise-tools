@@ -19,7 +19,7 @@ ENV PYTHONUNBUFFERED 1
 RUN pip install --upgrade pip && pip install poetry==1.5.1
 
 COPY ./backend/pyproject.toml ./backend/poetry.lock ./
-RUN poetry install --no-root --no-dev
+RUN poetry install --no-root
 
 COPY ./backend/ .
 COPY --from=frontend_builder app/frontend/build ./static
