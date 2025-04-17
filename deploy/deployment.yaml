@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: revise-tools
+  namespace: cops
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: revise-tools-server
+  template:
+    metadata:
+      labels:
+        app: revise-tools-server
+    spec:
+      containers:
+      - name: revise-tools-pod
+        image: registry.gitlab.com/tenetko/cops-revise-tools:1.0
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 80
+      imagePullSecrets:
+      - name: gitlab-cops-registry-credentials

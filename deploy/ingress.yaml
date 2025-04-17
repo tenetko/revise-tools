@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  creationTimestamp: null
+  name: revise-tools-ingress
+  namespace: cops
+  annotations:
+    nginx.org/proxy-connect-timeout: "180s"
+    nginx.org/proxy-read-timeout: "180s"
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: revise-tools.tenetko.net.ru
+    http:
+      paths:
+      - backend:
+          service:
+            name: revise-tools-service
+            port:
+              number: 8080
+        path: /
+        pathType: Prefix
+status:
+  loadBalancer: {}
